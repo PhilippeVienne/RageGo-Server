@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+ID: <%= @player.id %><br/>
+Code: <%= @player.code %><br/>
+Playing: <%= @player.playing? %><br/>
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>
