@@ -2,9 +2,13 @@
 
 <h1>Listing Games</h1>
 
+<% if @games.length > 0 %>
 <table>
   <thead>
   <tr>
+    <th>ID</th>
+    <th>Whites</th>
+    <th>Blacks</th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -12,6 +16,9 @@
   <tbody>
   <% @games.each do |game| %>
       <tr>
+        <td><%= game.id %></td>
+        <td><%= link_to game.whites_id, game.white_player %></td>
+        <td><%= link_to game.blacks_id, game.black_player %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: {confirm: 'Are you sure?'} %></td>
@@ -19,6 +26,9 @@
   <% end %>
   </tbody>
 </table>
+<% else %>
+    No game stored
+<% end %>
 
 <br>
 

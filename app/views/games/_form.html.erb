@@ -11,6 +11,9 @@
         </div>
     <% end %>
 
+    Whites: <%= f.collection_select :whites_id, Player.all, :id, :code, prompt: true %><br>
+    Blacks: <%= f.collection_select :blacks_id, Player.all, :id, :code, prompt: true %>
+
     <div class="actions">
       <%= f.submit %>
     </div>
