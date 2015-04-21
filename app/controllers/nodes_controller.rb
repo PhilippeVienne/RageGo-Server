@@ -69,6 +69,6 @@ class NodesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def node_params
-    params[:node]
+    params.require(:node).permit(:data, :player_id, :game_id)
   end
 end

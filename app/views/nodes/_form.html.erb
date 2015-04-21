@@ -11,6 +11,11 @@
         </div>
     <% end %>
 
+    Game: <%= f.collection_select :game_id, Game.all, :id, :id, prompt: true %><br>
+    Player: <%= f.collection_select :player_id, Player.all, :id, :code, prompt: true %><br>
+    Data: <br>
+    <%= f.text_area :data %>
+    <br>
     <div class="actions">
       <%= f.submit %>
     </div>
