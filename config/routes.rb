@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :games
   resources :nodes
   resources :players
+  get 'player/:code' => 'players#get_by_code'
   get 'games/:id/nodes' => 'games#get_nodes'
   get 'games/:id/join' => 'games#join'
   get 'games/for/:player_id' => 'games#find'

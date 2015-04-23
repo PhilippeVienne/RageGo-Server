@@ -61,6 +61,15 @@ class PlayersController < ApplicationController
     end
   end
 
+  # GET /player/:code
+  def get_by_code
+    @player = Player.find_by_code(params[:code])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :show }
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_player
