@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
 
   def generate_code
     loop do
-      chars = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
+      chars = ('a'..'l').to_a + ('A'..'L').to_a + ('2'..'9').to_a
       self.code = (0...5).collect { chars[Kernel.rand(chars.length)] }.join
       break if Player.where(:code => self.code).count < 1
     end
