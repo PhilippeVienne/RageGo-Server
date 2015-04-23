@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :get_nodes]
 
   # GET /games
   # GET /games.json
@@ -59,6 +59,11 @@ class GamesController < ApplicationController
       format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /games/1/nodes
+  def get_nodes
+    @nodes = @game.nodes
   end
 
   private

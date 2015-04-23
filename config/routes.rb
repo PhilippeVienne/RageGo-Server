@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :games
   resources :nodes
   resources :players
+  get 'games/:id/nodes' => 'games#get_nodes'
 
   # Example resource route with options:
   #   resources :products do
