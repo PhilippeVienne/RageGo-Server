@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :nodes
   resources :players
   get 'games/:id/nodes' => 'games#get_nodes'
+  get 'games/:id/join' => 'games#join'
+  get 'games/for/:player_id' => 'games#find'
+  get 'nodes/for/game/:game_id/player/:player_id' => 'nodes#get_nodes_for_game_and_player'
+  get 'nodes/for/game/:game_id' => 'nodes#get_nodes_for_game'
 
   # Example resource route with options:
   #   resources :products do

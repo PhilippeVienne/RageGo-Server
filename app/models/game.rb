@@ -10,4 +10,8 @@ class Game < ActiveRecord::Base
   def whites_can_not_be_blacks
     errors.add(:white_player, 'Can not be equal to black player') if whites_id == blacks_id
   end
+
+  def self.waiting_for(player)
+    Game.where(white_player: player, waiting: true)
+  end
 end

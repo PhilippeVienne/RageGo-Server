@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy, :get_nodes]
+  before_action :set_game, only: [:show, :edit, :update, :destroy, :get_nodes, :join]
 
   # GET /games
   # GET /games.json
@@ -25,6 +25,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
+    @game.waiting = true
 
     respond_to do |format|
       if @game.save
@@ -64,6 +65,23 @@ class GamesController < ApplicationController
   # GET /games/1/nodes
   def get_nodes
     @nodes = @game.nodes
+  end
+
+  # GET /games/1/join
+  def join
+    @game.waiting = false
+    respond_to do |format|
+      if @game.save
+        format.json { render :show, status: :ok, location: @game }
+      else
+        format.json { render json: @game.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /games/for/:player_id
+  def find
+    @games = Game.waiting_for Player.find(params[:player_id])
   end
 
   private

@@ -1,0 +1,1 @@
+json.array! @games, :id, :blacks_id, :whites_id

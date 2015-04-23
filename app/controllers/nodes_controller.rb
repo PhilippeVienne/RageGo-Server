@@ -61,6 +61,24 @@ class NodesController < ApplicationController
     end
   end
 
+  # GET /nodes/for/game/:game_id/player/:player_id
+  def get_nodes_for_game_and_player
+    @nodes = Node.where(game_id: params[:game_id], player_id: params[:player_id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :get_nodes }
+    end
+  end
+
+  # GET /nodes/for/game/:game_id
+  def get_nodes_for_game
+    @nodes = Node.where(game_id: params[:game_id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :get_nodes }
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_node
